@@ -1,7 +1,7 @@
 export const c = {
     mainColor: '#99D2CA',
-    mainColorDark: '#ff9b94',
-    mainColorLight: '#fad5d2',
+    mainColorDark: '#60b9ac',
+    mainColorLight: '#cde9e5',
     mainBlack: '#262626',
     mainWhite: '#F0F8FF',
     grayColor: '#f9f9f9',

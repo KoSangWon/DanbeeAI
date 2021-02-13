@@ -81,7 +81,7 @@ const NavBar = ({ children, navigation, selectedStack }) => {
                 : styles.title
             }
           >
-            공지사항
+            게시판
           </Text>
         </TouchableOpacity>
         <TouchableOpacity

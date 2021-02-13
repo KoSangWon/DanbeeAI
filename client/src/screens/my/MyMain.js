@@ -3,17 +3,11 @@ import {
   Container,
   Content,
   Thumbnail,
-  List,
-  ListItem,
-  Icon,
   Text,
-  Left,
-  Body,
-  Right,
   View,
   Spinner,
 } from "native-base";
-import { StyleSheet, Image, RefreshControl } from "react-native";
+import { StyleSheet, RefreshControl } from "react-native";
 import { gql, useLazyQuery } from "@apollo/client";
 import { d } from "../../utils/size";
 import { c } from "../../utils/color";
@@ -55,19 +49,13 @@ const MyMain = ({ navigation }) => {
   const [runFunc, { loading, error, data }] = useLazyQuery(USER_PROFILE_QUERY, {
     pollInterval: 2000,
   });
-console.log('dataaaaaaa', data)
+  console.log("dataaa", data);
   useEffect(() => {
     if (isLoggedIn) {
       runFunc();
     }
   }, [isLoggedIn]);
 
-  if (loading)
-    return (
-      <View styles={{ justifyContent: "center", alignItems: "center" }}>
-        <Spinner />
-      </View>
-    );
   if (error) {
     console.log(error);
     return (
@@ -77,33 +65,32 @@ console.log('dataaaaaaa', data)
     );
   }
 
-  // console.log("넘어와라데이터", data);
-  return !loading ? (
-    <NavBar  selectedStack={'MyStack'}>
+  return (
+    <NavBar selectedStack={"MyStack"}>
       <Container style={styles.container}>
         <MainHeader title="마이페이지" />
         <Content
           padder
           showsVerticalScrollIndicator={false}
-         
           refreshControl={
-            isLoggedIn?<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />:null
+            isLoggedIn ? (
+              <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+            ) : null
           }
         >
           <View style={styles.profileContainer}>
             <View style={styles.infoContainer}>
-              {/* <Thumbnail
+              <Thumbnail
                 width={d.px * 42}
                 height={d.px * 42}
-                source={require("../../images/Shirts/T1.jpg")}
-              /> */}
+                source={require("../../../assets/logo.png")}
+              />
 
               <Text style={styles.userIdContainer}>
                 {isLoggedIn ? (
                   data ? (
-                    data.profile.username
+                    data?.profile?.username
                   ) : (
-                    //"asdf"
                     <Spinner />
                   )
                 ) : (
@@ -115,15 +102,9 @@ console.log('dataaaaaaa', data)
               <View style={styles.editContainer}>
                 <TouchableOpacity
                   onPress={() => navigation.navigate("EditPersonalInfo")}
-                  style={{ ...styles.editBox, marginBottom: d.px * 5 }}
+                  style={{ ...styles.editBox }}
                 >
                   <Text style={styles.editText}>개인정보 수정</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate("ManagePlace")}
-                  style={styles.editBox}
-                >
-                  <Text style={styles.editText}>배송지 관리</Text>
                 </TouchableOpacity>
               </View>
             ) : null}
@@ -133,7 +114,7 @@ console.log('dataaaaaaa', data)
             <View style={styles.pointContainer}>
               <Text style={styles.pointTitle}>포인트</Text>
               <Text style={styles.myPoint}>
-                {data ? data.profile.point : <Spinner />} p
+                {data ? data.profile?.point : <Spinner />} p
               </Text>
             </View>
           ) : null}
@@ -146,35 +127,10 @@ console.log('dataaaaaaa', data)
                 <Text style={styles.category}>로그인</Text>
                 <View style={{ flexDirection: "row" }}>
                   <MyBox title="로그인" stack="MyStack" screen="LoginMain" />
-                  <MyBox
-                    title="회원가입"
-                    stack="MyStack"
-                    screen="SignUpScreen"
-                  />
+                  <MyBox title="회원가입" stack="MyStack" screen="SignUpMain" />
                 </View>
               </View>
             )}
-
-            <View style={styles.bigContainer}>
-              <Text style={styles.category}>쇼핑</Text>
-              <View style={{ flexDirection: "row" }}>
-                <MyBox
-                  title="주문/배송조회"
-                  stack="MyStack"
-                  screen="DeliveryCheck"
-                />
-                <MyBox
-                  title="장바구니"
-                  stack="MyStack"
-                  screen="Cart"
-                />
-                <MyBox
-                  title="쿠폰"
-                  stack="MyStack"
-                  screen="CouponInfo"
-                />
-              </View>
-            </View>
 
             {isLoggedIn ? (
               <View style={styles.bigContainer}>
@@ -193,7 +149,7 @@ console.log('dataaaaaaa', data)
             <View style={styles.bigContainer}>
               <Text style={styles.category}>서비스 설정</Text>
               <View style={{ flexDirection: "row" }}>
-                <MyBox title="설정" stack="MyStack" screen="SettingScreen"/>
+                <MyBox title="설정" stack="MyStack" screen="SettingMain" />
               </View>
             </View>
             <View style={styles.bigContainer}>
@@ -234,14 +190,12 @@ console.log('dataaaaaaa', data)
             </TouchableOpacity>
           </View>
           {/* <View style={{ alignItems: "center" }}>
-            <Image source={require("../../images/logo.png")} />
+            <Image source={require("../../../assets/logo.png")} />
           </View> */}
           <View style={{ margin: d.px * 10 }}></View>
         </Content>
       </Container>
     </NavBar>
-  ) : (
-    <Spinner />
   );
 };
 

@@ -11,14 +11,13 @@ import { Provider } from "react-redux";
 import { NavigationContainer } from "@react-navigation/native";
 import AsyncStorage from "@react-native-community/async-storage";
 import { setContext } from "@apollo/client/link/context";
-// import { AsyncAccessToken } from "./utils/asyncStorage";
 // import NavController from "./navigation/NavController";
 import { Text } from "native-base";
 import NavController from "./src/navigations/NavController";
 import store from "./src/store/store";
+import { AsyncAccessToken } from "./src/utils/asyncStorage";
 
-const LOCAL_API_URL = "http://172.30.1.37:4000";
-//const API_URL = "http://172.30.1.5:4000"; //http://gitlab.kfirstlab.com:4000
+const LOCAL_API_URL = "http://192.168.35.18:4000";
 
 const httpLink = createHttpLink({ uri: `${LOCAL_API_URL}/graphql` }); //API_URL로 써도됨
 
