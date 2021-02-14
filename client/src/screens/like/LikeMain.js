@@ -22,6 +22,7 @@ import { c } from "../../utils/color";
 import { useMutation, gql } from "@apollo/client";
 import MainHeader from "../../components/headers/MainHeader";
 import NavBar from "../../navigations/NavBar";
+import ClassList from "../../components/like/ClassList";
 
 const DELETE_CHECK_LIKES = gql`
   mutation DelCheckLikes($productIdArray: [String!]) {
@@ -38,42 +39,12 @@ const LikeMain = ({ navigation }) => {
 
   return (
     <Container>
-      {isLoggedIn ? (
-       
-          <NavBar selectedStack={'LikeStack'}>
-            <MainHeader title="My 찜" />
-            <View style={{ marginTop: d.px * 8 }}>
-              {/* <LikeList /> */}
-            </View>
-          </NavBar>
-        
-      ) : (
-        <NavBar selectedStack={'LikeStack'}>
-          <MainHeader title="My 찜" />
-          
-          <View style={styles.loginContainer}>
-            <View
-              style={{
-                borderRadius: d.px * 20,
-                backgroundColor: c.mainColorDark,
-              }}
-            >
-              <Text style={styles.loginText}>
-                찜기능 사용을 위해 로그인해주세요!
-              </Text>
-            </View>
-            <TouchableOpacity
-              onPress={() =>
-                navigation.navigate("MyStack", { screen: "MyMain" })
-              }
-              style={{ marginTop: d.px * 10 }}
-            >
-              <Text style={{ fontWeight: "600" }}>{"마이페이지 > "}</Text>
-            </TouchableOpacity>
-          </View>
-          {/* </LinearGradient> */}
-        </NavBar>
-      )}
+      <NavBar selectedStack={"LikeStack"}>
+        <MainHeader title="전체강좌" />
+        <View style={{ marginTop: d.px * 8 }}>
+          <ClassList items={['aa','bb','cc','dd']}/>
+        </View>
+      </NavBar>
     </Container>
   );
 };
