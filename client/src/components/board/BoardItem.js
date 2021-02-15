@@ -1,33 +1,10 @@
 import * as React from "react";
-import { useState } from "react";
-import {
-  Container,
-  Header,
-  Left,
-  Body,
-  Right,
-  Content,
-  View,
-  Icon,
-  Text,
-  Button,
-  CheckBox,
-  Item,
-  Row,
-  Image,
-} from "native-base";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text } from "native-base";
+import { StyleSheet } from "react-native";
 import { d } from "../../utils/size";
-import { withNavigation } from "@react-navigation/compat";
 import { c } from "../../utils/color";
-import { AntDesign } from "@expo/vector-icons";
 
-const BoardItem = ({
-  index,
-  writer,
-  text,
-  createdAt,
-}) => {
+const BoardItem = ({ index, title, question, answer, createdAt }) => {
   const date = new Date(createdAt);
   const parsedDate =
     date.getFullYear().toString().substring(2, 4) +
@@ -39,17 +16,24 @@ const BoardItem = ({
   return (
     <View style={styles.container}>
       <View style={styles.topContainer}>
-        <View
-          style={styles.indexContainer}
-        >
-          <Text style={{fontSize: d.px*15}}>{index}</Text>
+        <View style={styles.indexContainer}>
+          <Text style={{ fontSize: d.px * 15 }}>{index}</Text>
         </View>
         <Text style={styles.dateStyle}>{parsedDate}</Text>
       </View>
-      <View style={{marginTop: d.px*15}}>
-        <Text style={styles.textStyle}>{"강좌 : " + text}</Text>
-        <Text style={styles.textStyle}>{"질문 : " + text}</Text>
-        <Text style={styles.textStyle}>{"답변 : " + text}</Text>
+      <View style={{ marginTop: d.px * 15 }}>
+        <View style={{ marginBottom: d.px * 10 }}>
+          <Text style={styles.titleStyle}>{"강좌"}</Text>
+          <Text style={styles.textStyle}>{title}</Text>
+        </View>
+        <View style={{ marginBottom: d.px * 10 }}>
+          <Text style={styles.titleStyle}>{"질문"}</Text>
+          <Text style={styles.textStyle}>{question}</Text>
+        </View>
+        <View style={{ marginBottom: d.px * 10 }}>
+          <Text style={styles.titleStyle}>{"답변"}</Text>
+          <Text style={styles.textStyle}>{answer}</Text>
+        </View>
       </View>
     </View>
   );
@@ -82,11 +66,17 @@ const styles = StyleSheet.create({
     backgroundColor: c.mainColorDark,
     borderRadius: d.px * 20,
   },
-  textStyle: {
+  titleStyle: {
     fontSize: d.px * 17,
+    color: c.blueColor,
+    fontWeight: "600",
+    padding: d.px * 3,
+  },
+  textStyle: {
+    fontSize: d.px * 15,
     color: c.mainBlack,
     fontWeight: "600",
-    padding: d.px * 8,
+    padding: d.px * 3,
   },
   dateStyle: {
     fontSize: d.px * 14,

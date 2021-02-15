@@ -67,8 +67,8 @@ const NavBar = ({ children, navigation, selectedStack }) => {
           <MaterialCommunityIcons
             name={
               selectedStack === "BoardStack"
-                ? "tshirt-crew"
-                : "tshirt-crew-outline"
+                ? "clipboard-multiple"
+                : "clipboard-multiple-outline"
             }
             style={
               selectedStack === "BoardStack" ? styles.selectedIcon : styles.icon

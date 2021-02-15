@@ -17,7 +17,7 @@ import NavController from "./src/navigations/NavController";
 import store from "./src/store/store";
 import { AsyncAccessToken } from "./src/utils/asyncStorage";
 
-const LOCAL_API_URL = "http://192.168.35.178:4000";
+const LOCAL_API_URL = "http://192.168.35.92:4000";
 
 const httpLink = createHttpLink({ uri: `${LOCAL_API_URL}/graphql` }); //API_URL로 써도됨
 

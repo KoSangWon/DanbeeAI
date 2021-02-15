@@ -136,7 +136,7 @@ const MyMain = ({ navigation }) => {
               <View style={styles.bigContainer}>
                 <Text style={styles.category}>MY</Text>
                 <View style={{ flexDirection: "row" }}>
-                  <MyBox title="MY 리뷰" stack="MyStack" screen="MyReview" />
+                  <MyBox title="MY 게시글" stack="MyStack" screen="MyReview" />
                   <MyBox
                     title="MY 알림"
                     stack="MyStack"
@@ -169,9 +169,6 @@ const MyMain = ({ navigation }) => {
               </View>
             </View>
           </View>
-          <Text style={styles.notice}>
-            Codi의 상품 주문, 배송 및 환불의 의무와 책임은 각 판매처에 있습니다.
-          </Text>
           <View style={styles.otherNoticeContainer}>
             <TouchableOpacity
               onPress={() =>

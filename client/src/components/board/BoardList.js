@@ -12,7 +12,9 @@ export const GET_BOARDS_QUERY = gql`
   query GetBoards {
     allBoards {
       id
-      text
+      title
+      question
+      answer
       createdAt
     }
   }
@@ -60,7 +62,13 @@ const BoardList = ({ navigation }) => {
           </Text>
         </View>
       </View>
-      <View style={{ flexDirection: "row", justifyContent: "flex-end" }}>
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "flex-end",
+          marginRight: d.px * 3,
+        }}
+      >
         <TouchableOpacity
           onPress={() => navigation.navigate("RegisterBoard")}
           style={styles.registerBtn}
@@ -75,7 +83,9 @@ const BoardList = ({ navigation }) => {
               key={review.id}
               index={index + 1}
               id={review.id}
-              text={review.text}
+              title={review.title}
+              question={review.question}
+              answer={review.answer}
               createdAt={review.createdAt}
             />
           );
