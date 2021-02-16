@@ -5,13 +5,6 @@ import { d } from "../../utils/size";
 import { c } from "../../utils/color";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { withNavigation } from "@react-navigation/compat";
-import { gql, useQuery } from "@apollo/client";
-
-const GET_REVIEW_CNT_QUERY = gql`
-  query GetReviewCnt($boardId: String!) {
-    reviewCnt(boardId: $boardId)
-  }
-`;
 
 const BoardItem = ({
   navigation,
@@ -29,25 +22,6 @@ const BoardItem = ({
     (date.getMonth() + 1) +
     "." +
     date.getDate();
-
-  const { loading, error, data } = useQuery(GET_REVIEW_CNT_QUERY, {
-    variables: { boardId: id },
-  });
-
-  if (loading)
-    return (
-      <View
-        styles={{ justifyContent: "center", alignItems: "center", flex: 1 }}
-      >
-        <Spinner />
-      </View>
-    );
-  if (error)
-    return (
-      <View>
-        <Text>ID를 가져오지 못했습니다.</Text>
-      </View>
-    );
 
   return (
     <TouchableOpacity
@@ -78,20 +52,6 @@ const BoardItem = ({
         <View style={{ marginBottom: d.px * 10 }}>
           <Text style={styles.titleStyle}>{"내용"}</Text>
           <Text style={styles.textStyle}>{question}</Text>
-        </View>
-        <View
-          style={{
-            alignSelf: "flex-end",
-            backgroundColor: "#fbc2eb",
-            borderRadius: d.px * 10,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Text style={{ fontSize: d.px * 13, padding: d.px * 2.5 }}>
-            {" "}
-            댓글 {data.reviewCnt}
-          </Text>
         </View>
       </View>
     </TouchableOpacity>

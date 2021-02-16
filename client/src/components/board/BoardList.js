@@ -14,7 +14,6 @@ export const GET_BOARDS_QUERY = gql`
       id
       title
       question
-      answer
       createdAt
     }
   }
@@ -41,7 +40,7 @@ const BoardList = ({ navigation }) => {
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
-      contentContainerStyle={{ paddingBottom: 280 }}
+      contentContainerStyle={{ paddingBottom: 130 }}
     >
       <View style={styles.productContainer}>
         <View
@@ -85,8 +84,8 @@ const BoardList = ({ navigation }) => {
               id={review.id}
               title={review.title}
               question={review.question}
-              answer={review.answer}
               createdAt={review.createdAt}
+              disabled={false}
             />
           );
         })}

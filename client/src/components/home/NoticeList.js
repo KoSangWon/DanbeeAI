@@ -3,25 +3,22 @@ import { Spinner, Text, View } from "native-base";
 import { StyleSheet } from "react-native";
 import { c } from "../../utils/color";
 import { d } from "../../utils/size";
-import ClassItem from "./ClassItem";
+import MyClassItem from "./MyClassItem";
+import NoticeItem from "./NoticeItem";
 import { gql, useQuery } from "@apollo/client";
 
-
-const CLASS_QUERY = gql`
+const NOTICE_QUERY = gql`
   query {
-    classes {
+    notices {
       id
-      professor
-      class
-      url
+      title
+      content
     }
   }
 `;
 
-
-const ClassList = ({ items }) => {
-
-  const { loading, error, data } = useQuery(CLASS_QUERY);
+const NoticeList = () => {
+  const { loading, error, data } = useQuery(NOTICE_QUERY);
   if (loading)
     return (
       <View
@@ -37,22 +34,31 @@ const ClassList = ({ items }) => {
       </View>
     );
 
-    return (
+  return (
     <View style={styles.container}>
-        {data.classes.map((item, index) => (
-          <ClassItem key={index} item={item} />
+      <View style={styles.subcontainer}>
+        {data.notices.map((item, index) => (
+          <NoticeItem key={index} item={item} index={index} />
         ))}
+      </View>
     </View>
   );
 };
 
-export default ClassList;
+export default NoticeList;
 
 const styles = StyleSheet.create({
   container: {
     paddingLeft: d.px * 15,
     paddingRight: d.px * 15,
     paddingTop: d.px * 7,
+  },
+  subcontainer: {
+    padding: d.px * 5,
+    borderColor: c.mainColorDark,
+    borderLeftWidth: d.px * 4,
+    borderBottomRightRadius: d.px * 3,
+    borderTopRightRadius: d.px * 3,
   },
   title: {
     fontSize: d.px * 14,

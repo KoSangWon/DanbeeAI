@@ -42,7 +42,7 @@ const RegisterBoard = ({ navigation }) => {
       <ScrollView>
         <View style={styles.paperContainer}>
           <View style={{ marginBottom: d.px * 2 }}>
-            <LeftText text={"강좌"} />
+            <LeftText text={"제목"} />
           </View>
           <TextInput
             multiline
@@ -53,7 +53,7 @@ const RegisterBoard = ({ navigation }) => {
         </View>
         <View style={styles.paperContainer}>
           <View style={{ marginBottom: d.px * 2 }}>
-            <LeftText text={"질문"} />
+            <LeftText text={"내용"} />
           </View>
           <TextInput
             multiline
@@ -62,17 +62,7 @@ const RegisterBoard = ({ navigation }) => {
             value={question}
           />
         </View>
-        <View style={styles.paperContainer}>
-          <View style={{ marginBottom: d.px * 2 }}>
-            <LeftText text={"답변"} />
-          </View>
-          <TextInput
-            multiline
-            style={styles.textInput}
-            onChangeText={(content) => setAnswer(content)}
-            value={answer}
-          />
-        </View>
+       
         <TouchableOpacity onPress={onSubmit} style={styles.regBtn}>
           <Text style={styles.regText}>등록버튼</Text>
         </TouchableOpacity>

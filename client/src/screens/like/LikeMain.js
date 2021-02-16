@@ -42,7 +42,7 @@ const LikeMain = ({ navigation }) => {
       <NavBar selectedStack={"LikeStack"}>
         <MainHeader title="전체강좌" />
         <View style={{ marginTop: d.px * 8 }}>
-          <ClassList items={['aa','bb','cc','dd']}/>
+          <ClassList />
         </View>
       </NavBar>
     </Container>

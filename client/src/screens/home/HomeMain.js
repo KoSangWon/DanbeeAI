@@ -1,12 +1,14 @@
 import * as React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Container, View } from "native-base";
+import { Container, Spinner, View } from "native-base";
 import { StyleSheet } from "react-native";
 import { d } from "../../utils/size";
 import NavBar from "../../navigations/NavBar";
 import HomeHeader from "../../components/headers/HomeHeader";
 import TitleBox from "../../components/home/TitleBox";
 import MyClassList from "../../components/home/MyClassList";
+import NoticeList from "../../components/home/NoticeList";
+
 
 const HomeMain = ({ navigation }) => {
   const isLoggedIn = useSelector((state) => state.authReducer.isLoggedIn);
@@ -17,11 +19,11 @@ const HomeMain = ({ navigation }) => {
         <HomeHeader title="DANBEE CLASS" />
         <View style={{ marginTop: d.px * 8 }}>
           <TitleBox title={"수강강좌"} />
-          <MyClassList items={["가상현실", "데이터베이스", "컴퓨터구조"]} />
+          <MyClassList/>
         </View>
         <View style={{ marginTop: d.px * 8 }}>
           <TitleBox title={"공지사항"} />
-          <MyClassList items={["공지사항1", "공지사항2", "공지사항3"]} />
+          <NoticeList/>
         </View>
       </NavBar>
     </Container>
