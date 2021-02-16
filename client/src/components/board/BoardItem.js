@@ -60,9 +60,9 @@ const BoardItem = ({
           createdAt,
         });
       }}
+      activeOpacity={1}
       style={styles.container}
       disabled={disabled}
-      activeOpacity={1}
     >
       <View style={styles.topContainer}>
         <View style={styles.indexContainer}>

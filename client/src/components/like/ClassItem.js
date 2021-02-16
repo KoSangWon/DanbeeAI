@@ -93,7 +93,7 @@ const ClassItem = ({ navigation, item }) => {
       onPress={() => navigation.navigate("ClassWebView", { uri: item.url })}
       style={styles.container}
     >
-      <Text style={styles.title}>{item.professor}</Text>
+      <Text style={{...styles.title, color: c.blueColor, fontWeight: '600'}}>{item.professor}</Text>
       <Text style={{ ...styles.title, flex: 2 }}>{item.class}</Text>
       <TouchableOpacity onPress={pressHeart}>
         <MaterialCommunityIcons

@@ -6,16 +6,19 @@ import { c } from "../../utils/color";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { withNavigation } from "@react-navigation/compat";
 
-const NoticeItem = ({ navigation, item, index }) => {
+const HomeReviewItem = ({ navigation, item, index }) => {
   return (
     <TouchableOpacity
-      activeOpacity={1}
-      onPress={() =>
-        navigation.navigate("NoticeMain", {
+      onPress={() => {
+        navigation.navigate("ReviewBoard", {
+          id: item.id,
+          index,
           title: item.title,
-          content: item.content,
-        })
-      }
+          question: item.question,
+          createdAt: item.createdAt,
+        });
+      }}
+      activeOpacity={1}
       style={index === 0 ? styles.firstContainer : styles.container}
     >
       <Text style={styles.title}>- {item.title}</Text>
@@ -23,7 +26,7 @@ const NoticeItem = ({ navigation, item, index }) => {
   );
 };
 
-export default withNavigation(NoticeItem);
+export default withNavigation(HomeReviewItem);
 
 const styles = StyleSheet.create({
   container: {

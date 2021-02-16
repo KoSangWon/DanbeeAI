@@ -8,7 +8,8 @@ import HomeHeader from "../../components/headers/HomeHeader";
 import TitleBox from "../../components/home/TitleBox";
 import MyClassList from "../../components/home/MyClassList";
 import NoticeList from "../../components/home/NoticeList";
-
+import { ScrollView } from "react-native-gesture-handler";
+import HomeReviewList from "../../components/home/HomeReviewList";
 
 const HomeMain = ({ navigation }) => {
   const isLoggedIn = useSelector((state) => state.authReducer.isLoggedIn);
@@ -17,14 +18,20 @@ const HomeMain = ({ navigation }) => {
     <Container>
       <NavBar selectedStack={"HomeStack"}>
         <HomeHeader title="DANBEE CLASS" />
-        <View style={{ marginTop: d.px * 8 }}>
-          <TitleBox title={"수강강좌"} />
-          <MyClassList/>
-        </View>
-        <View style={{ marginTop: d.px * 8 }}>
-          <TitleBox title={"공지사항"} />
-          <NoticeList/>
-        </View>
+        <ScrollView>
+          <View style={{ marginTop: d.px * 8 }}>
+            <TitleBox title={"수강강좌"} />
+            <MyClassList />
+          </View>
+          <View style={{ marginTop: d.px * 8 }}>
+            <TitleBox title={"공지사항"} />
+            <NoticeList />
+          </View>
+          <View style={{ marginTop: d.px * 8 }}>
+            <TitleBox title={"게시판"} />
+            <HomeReviewList />
+          </View>
+        </ScrollView>
       </NavBar>
     </Container>
   );
