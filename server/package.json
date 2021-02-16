@@ -1,0 +1,55 @@
+{
+  "name": "newserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=production node -r esm",
+    "dev": "nodemon src/index.js --exec babel-node"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.10.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/plugin-syntax-import-meta": "^7.10.4",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "@hapi/joi": "^17.1.1",
+    "apollo-server-express": "^2.16.0",
+    "babel-preset-expo": "^8.2.3",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "consola": "^2.14.0",
+    "esm": "^3.2.25",
+    "eval": "^0.1.4",
+    "express": "^4.17.1",
+    "graphql": "^15.3.0",
+    "jsonwebtoken": "^8.5.1",
+    "milsymbol": "^2.0.0",
+    "mongoose": "^5.9.25",
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.4",
+    "shortid": "^2.2.15"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/node": "^7.0.0",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-plugin-root-import": "6.5.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-stage-3": "^6.24.1"
+  },
+  "plugins": [
+    [
+      "transform-object-rest-spread",
+      {
+        "useBuiltIns": true
+      }
+    ]
+  ]
+}
