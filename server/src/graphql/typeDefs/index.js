@@ -5,6 +5,8 @@ import board from "./board";
 import boardReview from "./boardReview";
 import classInfo from "./classInfo";
 import like from "./like";
+import info from "./info";
+import subInfo from "./subInfo";
 
 export default [
   root,
@@ -13,5 +15,7 @@ export default [
   board,
   boardReview,
   classInfo,
-  like
+  like,
+  info,
+  subInfo,
 ];
